@@ -7,7 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Post;
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -23,6 +23,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
